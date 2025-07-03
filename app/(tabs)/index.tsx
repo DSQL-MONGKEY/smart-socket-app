@@ -21,7 +21,7 @@ export default function HomeScreen() {
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText className='text-xl bg-blue-700' type="subtitle">Step 1: Try it EDD</ThemedText>
+        <ThemedText className='text-2xl bg-blue-700' type="subtitle">Step 1: Try it EDDasdas</ThemedText>
         <ThemedText>
           Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
           Press{' '}
