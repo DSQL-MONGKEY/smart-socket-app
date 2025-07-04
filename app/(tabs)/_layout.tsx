@@ -1,20 +1,11 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform, View } from 'react-native';
-
 import { HapticTab } from '@/components/HapticTab';
 import TabBarBackground from '@/components/ui/TabBarBackground';
+import { TabBarIcon } from '@/components/ui/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { navItems } from '@/constants/Data';
 import { useColorScheme } from '@/hooks/useColorScheme';
-
-function TabBarIcon({ icon }: { icon: React.ReactNode }) {
-  return (
-    <View className='flex'>
-      {icon}
-    </View>
-  );
-}
+import { Tabs } from 'expo-router';
+import { Platform } from 'react-native';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -29,37 +20,35 @@ export default function TabLayout() {
         tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
           ios: {
-            // Use a transparent background on iOS to show the blur effect
             position: 'absolute',
           },
           android: {
             position: 'absolute',
             bottom: 20,
             elevation: 0,
-            backgroundColor: '#fff',
+            backgroundColor: colorScheme === 'dark' ? '#1C1C1E' : '#ffffff',
             borderRadius: 16,
             height: 60,
-            tabBarLabelStyle: {
-              fontSize: 12,
-            },
           },
           default: {},
         }),
       }}
-
-      >
-        {navItems.map(({ name, label, icon, isActive }) => (
-          <Tabs.Screen
-            key={name}
-            name={name}
-            options={{
-              title: label,
-              tabBarIcon: () => (
-                <TabBarIcon icon={icon} />
-              ),
-            }}
-          />
-        ))}
+    >
+      {navItems.map(({ name, label, icon }) => (
+        <Tabs.Screen
+          key={name}
+          name={name}
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <TabBarIcon
+                icon={icon}
+                label={label}
+                focused={focused}
+              />
+            ),
+          }}
+        />
+      ))}
     </Tabs>
   );
 }
