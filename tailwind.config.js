@@ -5,7 +5,11 @@ module.exports = {
     "./components/**/*.{js,jsx,ts,tsx}"],
   presets: [require('nativewind/preset')],
   theme: {
-    extend: {},
+    extend: {
+      fontSize: {
+        dynamic: "var(--font-size-dynamic)",
+      },
+    },
   },
   plugins: [],
 }
