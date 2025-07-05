@@ -1,10 +1,15 @@
 {
   "expo": {
-    "name": "smart-socket-app",
+    "name": "E Smart Socket ",
     "slug": "smart-socket-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/icon-colokin.png",
+    "splash": {
+      "image": "./assets/images/splash-screen.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "scheme": "smartsocketapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
