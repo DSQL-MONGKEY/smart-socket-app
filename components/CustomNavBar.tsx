@@ -21,10 +21,8 @@ type TabBarIconProps = {
 export function TabBarIcon({ icon, label, isFocused }: TabBarIconProps) {
    const iconColor = isFocused ? '#f9f9f9' : '#9ca3af';
    return (
-      <View className="items-center justify-center">
-         <View className="">
-            {cloneElement(icon as ReactElement, { color: iconColor } as any)}
-         </View>
+      <View>
+         {cloneElement(icon as ReactElement, { color: iconColor } as any)}
       </View>
    );
 }
@@ -36,7 +34,7 @@ export const CustomNavBar: React.FC<BottomTabBarProps> = ({
 }) => {
 
    return (
-      <View style={styles.container} className="bg-slate-200 dark:bg-zinc-800">
+      <View style={styles.container} className="bg-slate-200 dark:bg-zinc-800 gap-2">
          {state.routes.map((route, index) => {
          if (["_sitemap", "+not-found"].includes(route.name)) return null;
 
@@ -71,7 +69,7 @@ export const CustomNavBar: React.FC<BottomTabBarProps> = ({
                style={[
                styles.tabItem,
                ]}
-               className={`${isFocused ? 'bg-orange-500 dark:bg-orange-600 text-white' : 'bg-transparent'}`}
+               className={` px-3 ${isFocused ? 'bg-orange-500 dark:bg-orange-600 text-white rounded-[100]' : 'bg-transparent dark:bg-gray-700 rounded-full'}`}
             >
                <TabBarIcon icon={icon} isFocused={isFocused} />
                {isFocused && (
@@ -112,9 +110,7 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       justifyContent: "center",
       alignItems: "center",
-      height: 36,
-      paddingHorizontal: 13,
-      borderRadius: 30,
+      height: 40,
    },
    text: {
       marginLeft: 8,
