@@ -2,15 +2,28 @@ import "../global.css";
 
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { SplashScreen, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { useEffect } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
+
+  useEffect(() => {
+    const prepare = async () => {
+      // simulate loading, or wait Firebase ready, etc.
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      SplashScreen.hideAsync();
+    };
+    prepare();
+  }, []);
+
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
