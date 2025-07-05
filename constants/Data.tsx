@@ -1,6 +1,8 @@
 import {
    Cable,
+   CircleQuestionMark,
    HousePlug,
+   Joystick,
    Settings
 } from 'lucide-react-native';
 
@@ -15,11 +17,27 @@ export const navItems= [
       requiresAuth: true,    
    },
    {
+      name: 'manual-control',
+      label: 'Manual',
+      icon: <Joystick/>,
+      isActive: true,          
+      badge: 0,              
+      requiresAuth: true,    
+   },
+   {
       name: 'index',
       label: 'Home',
       icon: <HousePlug/>,
       isActive: true,          
-      badge: 4,              
+      badge: 0,              
+      requiresAuth: true,    
+   },
+   {
+      name: 'faq',
+      label: 'FAQ',
+      icon: <CircleQuestionMark/>,
+      isActive: true,          
+      badge: 0,              
       requiresAuth: true,    
    },
    {
@@ -27,7 +45,7 @@ export const navItems= [
       label: 'Settings',
       icon: <Settings/>,
       isActive: true,          
-      badge: 4,              
+      badge: 0,              
       requiresAuth: true,    
    },
 ]
