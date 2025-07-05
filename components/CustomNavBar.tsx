@@ -11,9 +11,6 @@ import Animated, {
 const AnimatedTouchableOpacity =
   Animated.createAnimatedComponent(TouchableOpacity);
 
-const PRIMARY_COLOR = "#130057";
-const SECONDARY_COLOR = "#fff";
-
 type TabBarIconProps = {
    icon: ReactNode;
    label?: string;
@@ -22,7 +19,7 @@ type TabBarIconProps = {
 
 
 export function TabBarIcon({ icon, label, isFocused }: TabBarIconProps) {
-   const iconColor = isFocused ? '#f97316' : '#9ca3af';
+   const iconColor = isFocused ? '#f9f9f9' : '#9ca3af';
    return (
       <View className="items-center justify-center">
          <View className="">
@@ -73,8 +70,8 @@ export const CustomNavBar: React.FC<BottomTabBarProps> = ({
                onPress={onPress}
                style={[
                styles.tabItem,
-               { backgroundColor: isFocused ? SECONDARY_COLOR : "transparent" },
                ]}
+               className={`${isFocused ? 'bg-orange-500 dark:bg-orange-600 text-white' : 'bg-transparent'}`}
             >
                <TabBarIcon icon={icon} isFocused={isFocused} />
                {isFocused && (
@@ -82,6 +79,7 @@ export const CustomNavBar: React.FC<BottomTabBarProps> = ({
                   entering={FadeIn.duration(200)}
                   exiting={FadeOut.duration(200)}
                   style={styles.text}
+                  className={`text-white dark:text-slate-100 font-semibold`}
                >
                   {label as string}
                </Animated.Text>
@@ -99,7 +97,7 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       justifyContent: "center",
       alignItems: "center",
-      width: "80%",
+      width: "90%",
       alignSelf: "center",
       bottom: 40,
       borderRadius: 40,
@@ -119,9 +117,7 @@ const styles = StyleSheet.create({
       borderRadius: 30,
    },
    text: {
-      color: PRIMARY_COLOR,
       marginLeft: 8,
-      fontWeight: "500",
    },
 });
 
