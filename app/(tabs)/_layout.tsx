@@ -1,6 +1,6 @@
+import { CustomNavBar } from '@/components/CustomNavBar';
 import { HapticTab } from '@/components/HapticTab';
 import TabBarBackground from '@/components/ui/TabBarBackground';
-import { TabBarIcon } from '@/components/ui/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { navItems } from '@/constants/Data';
 import { useColorScheme } from '@/hooks/useColorScheme';
@@ -13,6 +13,7 @@ export default function TabLayout() {
   return (
     <Tabs
       initialRouteName="index"
+      tabBar={(props) => <CustomNavBar {...props} />}
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
@@ -39,13 +40,8 @@ export default function TabLayout() {
           key={name}
           name={name}
           options={{
-            tabBarIcon: ({ focused }) => (
-              <TabBarIcon
-                icon={icon}
-                label={label}
-                focused={focused}
-              />
-            ),
+            title: label,
+            tabBarIcon: () => icon,
           }}
         />
       ))}
