@@ -69,7 +69,7 @@ export const CustomNavBar: React.FC<BottomTabBarProps> = ({
                style={[
                styles.tabItem,
                ]}
-               className={` px-3 ${isFocused ? 'bg-orange-500 dark:bg-orange-600 text-white rounded-[100]' : 'bg-transparent dark:bg-gray-700 rounded-full'}`}
+               className={` px-3 ${isFocused ? 'bg-orange-500 dark:bg-orange-600 rounded-[100]' : 'bg-transparent dark:bg-zinc-700 rounded-full'}`}
             >
                <TabBarIcon icon={icon} isFocused={isFocused} />
                {isFocused && (
