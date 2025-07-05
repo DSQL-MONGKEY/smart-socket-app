@@ -16,7 +16,7 @@ export default function StatCard() {
                </Text>
             </View>
             <Text className='text-2xl font-semibold mt-5 text-gray-700 dark:text-gray-300'>
-               $0.12
+               Rp.12,500
             </Text>
          </View>
 
