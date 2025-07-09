@@ -1,14 +1,25 @@
 
-import StatCard from '@/components/features/home/StatCard';
+import StatCard, { StatCardProps } from '@/components/features/home/StatCard';
 import { ThemedView } from '@/components/ThemedView';
 import ScrollScreen from '@/components/ui/layout/ScrollScreen';
+import { listenToPath } from '@/hooks/useRealtime';
 import { useRouter } from 'expo-router';
 import { Bell } from 'lucide-react-native';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, useColorScheme } from 'react-native';
 
 export default function HomeScreen() {
   const router = useRouter();
   const colorSchema = useColorScheme();
+
+  const [realtimeData, setRealtimeData] = useState<StatCardProps | null>(null);
+
+  useEffect(() => {
+    const unsubscribe = listenToPath<StatCardProps>("/sensor", setRealtimeData);
+    return () => unsubscribe(); // cleanup listener
+  }, []);
+
+  console.log(realtimeData)
 
   return (
     <ScrollScreen className='px-5'>
@@ -21,7 +32,7 @@ export default function HomeScreen() {
             Welcome Back!
           </Text>
           <Text className='text-4xl text-gray-700 dark:text-gray-300 font-bold'>
-            Eddy
+            Mas Eddy
           </Text>
         </ThemedView>
 
@@ -34,8 +45,13 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </ThemedView>
 
-      <ThemedView className='flex-row mt-6 gap-2'>
-        <StatCard />
+      <ThemedView className='mt-6 gap-2'>
+        <StatCard
+          daya={realtimeData?.daya ?? 0}
+          arus={realtimeData?.arus ?? 0}
+          tegangan={realtimeData?.tegangan ?? 0}
+          biaya={realtimeData?.biaya ?? 0}
+        />
       </ThemedView>
     </ScrollScreen>
   );
