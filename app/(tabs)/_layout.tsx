@@ -9,6 +9,8 @@ import { Platform } from 'react-native';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  
+
 
   return (
     <Tabs
